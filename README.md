@@ -12,7 +12,7 @@
 
 ## Introduction
 The goal of the project is to understand how an agent acts in an environment according to it perceptions.<br>
-To achieve this objective there are a RoboDog ```agent``` and a Park ```environment```.<br>
+To achieve this objective the RoboDog ```agent``` and the Park ```environment``` were created.<br>
 The agent must be able to interact with it perceptions and take actions.<br>
 For the purpose of interactions, Food and Water ```things``` were allocated at the Park.<br>
 Walk, Eat and Drink are the actions the agent is able to take.<br>
