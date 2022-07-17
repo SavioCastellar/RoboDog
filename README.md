@@ -59,5 +59,5 @@ The version for all used packages can be seen here.
 <br>
 For the environment above, that's the output we get:
 <a>
-  <img src="https://user-images.githubusercontent.com/78110795/179368899-bee8cdec-037f-4c41-8abc-29f9532995b4.PNG">
+  <img src="https://user-images.githubusercontent.com/78110795/179368899-bee8cdec-037f-4c41-8abc-29f9532995b4.PNG"  width="229.5" height="171.25">
 </a>
