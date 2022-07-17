@@ -1,4 +1,4 @@
-name: agentes
+name: agents
 channels:
 - defaults
 dependencies:
