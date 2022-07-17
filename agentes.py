@@ -1,9 +1,3 @@
-# Esse script é uma implementação de agentes em Python
-# Vamos revisar os conceitos abordados no Capítulo 2
-# Neste script você encontra a especificação da classe Python que cria o Agente
-# No Jupyter Notebook anexo, você encontra a utilização do Agente
-
-
 from grid import *
 from statistics import mean
 
@@ -11,38 +5,28 @@ import random
 import copy
 import collections
 
+# Class that represents physical objects that can be shown at an environment.
+# Each "thing" can have an attribute .__name__ used as an output.
 
-# Classe que representa objetos físicos que podem aparecer em um ambiente.
-# Cada "coisa" pode ter um atributo .__name__ usado para output
 class Thing(object):
 
     def __repr__(self):
         return '<{}>'.format(getattr(self, '__name__', self.__class__.__name__))
 
     def is_alive(self):
-        "Coisas que estão vivas' devem retornar True."
+        "Things that are 'alive' must return True."
         return hasattr(self, 'alive') and self.alive
 
     def show_state(self):
-        "Exibe o estado interno do agente. Subclasses devem substituir."
-        print("Não sei como mostrar o estado.")
+        "Shows the internal state of the agent. Subclasses must replace."
+        print("I don't know how to show the state.")
 
     def display(self, canvas, x, y, width, height):
-        "Mostre uma imagem desta 'coisa na tela."
+        "Show an image of this 'thing' in screen."
         pass
 
 
 class Agent(Thing):
-
-    """Um Agente é uma subclasse da classe Thing, que deve conter uma função que recebe um argumento, 
-     a percepção, e retorna uma ação. (O que conta como uma percepção ou ação
-     dependerá do ambiente específico em que o agente existir.)
-     Note que 'programa' é um slot, não um método. Se fosse um método,
-     então o programa poderia "enganar" e olhar para os aspectos do agente.
-     Isso não deve ser feito. Um programa de agente que precisa de um modelo do mundo (e do
-     próprio agente) terá que construir e manter seu próprio modelo.
-     Há um slot opcional, .performance, que é um número que dá
-     a medida de desempenho do agente em seu ambiente.."""
 
     def __init__(self, program=None):
         self.alive = True
@@ -56,29 +40,31 @@ class Agent(Thing):
         self.program = program
 
     def can_grab(self, thing):
-        """Retorna True se este agente pode pegar essa coisa.
-         Substituir para subclasses apropriadas de Agente e Coisa."""
+        """Return True if this agent is able to catch this "thing".
+        Replace for apropriate subclasses of Agent and Thing."""
         return False
 
 
 def TraceAgent(agent):
-    """Acompanha o programa do agente para imprimir sua entrada e saída. Isso deixará
-     Você ver o que o agente está fazendo no ambiente."""
+    """Goes with the agent's program to print its input and output.
+    This will let the user see what the agent is doing at the environment."""
+
     old_program = agent.program
 
     def new_program(percept):
         action = old_program(percept)
-        print('{} percebe {} e faz {}'.format(agent, percept, action))
+        print('{} notices {} and does {}'.format(agent, percept, action))
         return action
     agent.program = new_program
     return agent
 
 
 def TableDrivenAgentProgram(table):
-    """Esse agente seleciona uma ação baseada na sequência de percepção.
-     É prático apenas para domínios minúsculos.
-     Para personalizá-lo, forneça como tabela um dicionário de todos os pares
-     {Percept_sequence: action}.["""
+    """This agent selects an action based in a sequence of perceptions.
+    For big domains it's not usable.
+    To customize it, pass a dictionary as table for all the pairs.
+    Ex.: {Percept_sequence: action}"""
+
     percepts = []
 
     def program(percept):
@@ -89,12 +75,12 @@ def TableDrivenAgentProgram(table):
 
 
 def RandomAgentProgram(actions):
-    "Um agente que escolhe uma ação aleatoriamente, ignorando todas as percepções."
+    "An agent who chooses an action randomly, ignoring all the perceptions."
     return lambda percept: random.choice(actions)
 
 
 def SimpleReflexAgentProgram(rules, interpret_input):
-    "Este agente toma medidas baseadas apenas na percepção."
+    "This agent take actions only based in the perception."
     def program(percept):
         state = interpret_input(percept)
         rule = rule_match(state, rules)
@@ -104,7 +90,7 @@ def SimpleReflexAgentProgram(rules, interpret_input):
 
 
 def ModelBasedReflexAgentProgram(rules, update_state):
-    "Esse agente toma ação com base no percepto e estado."
+    "This agent take actions based in perception and state."
     def program(percept):
         program.state = update_state(program.state, program.action, percept)
         rule = rule_match(program.state, rules)
@@ -115,59 +101,56 @@ def ModelBasedReflexAgentProgram(rules, update_state):
 
 
 def rule_match(state, rules):
-    "Encontre a primeira regra que corresponda ao estado."
+    "Finds the first rule that matches the state."
     for rule in rules:
         if rule.matches(state):
             return rule
 
 
-# Ambiente
+# Environment
 
 class Environment(object):
+    """Class that represents an environment.
 
-    """Classe abstrata que representa um ambiente. Classes de Ambiente 'Real'
-     vão herdar dessa classe. Seu Ambiente normalmente precisará implementar:
+    Percept: Defines the perceptions that an agent notices.
+    Execute_action: Defines the effects of the execution of an action. Also update the agent.performance.
 
-         Percept: Define a percepção que um agente vê.
-         Execute_action: Define os efeitos da execução de uma ação. Atualize também o slot agent.performance.
-
-     O ambiente mantém uma lista de .things e .agents (que é um subconjunto
-     das coisas). Cada agente tem um slot de desempenho, inicializado a 0.
-     Cada coisa tem um slot de localização, mesmo que alguns ambientes não
-     precisem disso."""
+    The Environment keeps a list of .things and .agents.
+    Each agent has a slot of performance that starts with 0. 
+    Each thing has a slot of location, even those that don't need it."""
 
     def __init__(self):
         self.things = []
         self.agents = []
 
-    # lista de classes do ambiente
+    # List of classes in Environment
     def thing_classes(self):
         return []  
 
     def percept(self, agent):
         '''
-            Retorna a percepção que o agente vê. Pode ser implementado com base no ambiente.
+            Returns the perception that the agent sees. It can be implemented based in Environment.
         '''
         raise NotImplementedError
 
     def execute_action(self, agent, action):
-        "Altera o mundo (ambiente)"
+        "Changes the world (Environment)."
         raise NotImplementedError
 
     def default_location(self, thing):
-        "Localização padrão para colocar uma nova Coisa."
+        "Standard location to add new 'Thing'."
         return None
 
     def exogenous_change(self):
-        "Verifica se há mudança espontânea no mundo"
+        "Verifies if there are spontaneous changes in the 'world'."
         pass
 
     def is_done(self):
-        "Por padrão, o programa encerra quando não podemos encontrar um agente vivo."
+        "Ends the program when there is no alive agent avaiable."
         return not any(agent.is_alive() for agent in self.agents)
 
     def step(self):
-        """Executar o ambiente para um passo de tempo."""
+        "Executing the Environment for one time step."
         if not self.is_done():
             actions = []
             for agent in self.agents:
@@ -180,26 +163,25 @@ class Environment(object):
             self.exogenous_change()
 
     def run(self, steps=1000):
-        "Execute o ambiente para determinado número de etapas de tempo."
+        "Eexcuting the Environment for a determined number of time steps"
         for step in range(steps):
             if self.is_done():
                 return
             self.step()
 
     def list_things_at(self, location, tclass=Thing):
-        "Devolva todas as coisas exatamente em um determinado local."
+        "Returning all the things in the determined location"
         return [thing for thing in self.things
                 if thing.location == location and isinstance(thing, tclass)]
 
     def some_things_at(self, location, tclass=Thing):
-        """Retorna true se pelo menos uma das coisas no local
-         for uma instância de classe tclass (ou uma subclasse)."""
+        """Returns True if at least one of the things in local 
+        is an instance of class tclass."""
         return self.list_things_at(location, tclass) != []
 
     def add_thing(self, thing, location=None):
-        """Adicione uma coisa ao ambiente, definindo sua localização. Para
-         Conveniência, se a coisa é um programa do agente nós fazemos um agente novo
-         Para ele."""
+        """Add a new thing in Environment, defining its location."""
+
         if not isinstance(thing, Thing):
             thing = Agent(thing)
         assert thing not in self.things, "Don't add the same thing twice"
@@ -222,54 +204,53 @@ class Environment(object):
             self.agents.remove(thing)
 
 class Direction():
-    '''Uma classe de direção para agentes que querem mover-se em um plano 2D'''
+    """A direction class for agents who want to move in a 2D plan."""
 
-    R = "right"
-    L = "left"
-    U = "up"
-    D = "down"
+    D = "right"
+    A = "left"
+    W = "up"
+    S = "down"
 
     def __init__(self, direction):
         self.direction = direction
 
     def __add__(self, heading):
-        if self.direction == self.R:
+        if self.direction == self.D:
             return{
-                self.R: Direction(self.D),
-                self.L: Direction(self.U),
+                self.D: Direction(self.S),
+                self.A: Direction(self.W),
             }.get(heading, None)
         elif self.direction == self.L:
             return{
-                self.R: Direction(self.U),
-                self.L: Direction(self.L),
+                self.D: Direction(self.W),
+                self.A: Direction(self.A),
             }.get(heading, None)
-        elif self.direction == self.U:
+        elif self.direction == self.W:
             return{
-                self.R: Direction(self.R),
-                self.L: Direction(self.L),
+                self.D: Direction(self.D),
+                self.A: Direction(self.A),
             }.get(heading, None)
-        elif self.direction == self.D:
+        elif self.direction == self.S:
             return{
-                self.R: Direction(self.L),
-                self.L: Direction(self.R),
+                self.D: Direction(self.A),
+                self.A: Direction(self.D),
             }.get(heading, None)
 
     def move_forward(self, from_location):
         x, y = from_location
-        if self.direction == self.R:
+        if self.direction == self.D:
             return (x+1, y)
-        elif self.direction == self.L:
+        elif self.direction == self.A:
             return (x-1, y)
-        elif self.direction == self.U:
+        elif self.direction == self.W:
             return (x, y-1)
-        elif self.direction == self.D:
+        elif self.direction == self.S:
             return (x, y+1)
 
 
 class Obstacle(Thing):
-
-    """Algo que pode causar um impacto, impedindo um agente de
-     mover-se para o mesmo espaço em que está."""
+    """Something that can represent a limit, preventing an agent from
+    moving to the same space as it is now."""
     pass
 
 
@@ -278,20 +259,17 @@ class Wall(Obstacle):
 
 
 def compare_agents(EnvFactory, AgentFactories, n=10, steps=1000):
-    """Compara vários agentes em n instâncias de um ambiente."""
+    """Compares several agents in n instances in an Environment."""
     envs = [EnvFactory() for i in range(n)]
     return [(A, test_agent(A, steps, copy.deepcopy(envs)))
             for A in AgentFactories]
 
 
 def test_agent(AgentFactory, steps, envs):
-    "Retornar a pontuação média de execução de um agente em cada um dos ambientes, para as etapas"
+    "Returns the average score of execution (performance) of an agent in each of the Environments for each step."
     def score(env):
         agent = AgentFactory()
         env.add_thing(agent)
         env.run(steps)
         return agent.performance
     return mean(map(score, envs))
-
-
-
