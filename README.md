@@ -1,3 +1,13 @@
+<p align="right">
+  <a>
+    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909219.png" width="14" height="14" href="https://github.com/SavioCastellar/RoboDog/blob/main/README.de.md?plain=1">
+    <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt"> DE</a>
+    <br>
+    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" width="14" height="14">
+    <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt"> PT-BR</a>
+  </a>
+</p>
+
 <p align="center">
   <a>
     <img src="https://media.istockphoto.com/vectors/isometric-set-of-techno-robot-dog-vector-id685800642?k=20&m=685800642&s=612x612&w=0&h=bkQRhsBP-vYvqepWaMDS0SaPHR2tKjgjlSk46K7iaM8=" width="306" height="229">
