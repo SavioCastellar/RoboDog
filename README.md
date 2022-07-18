@@ -1,7 +1,7 @@
 <p align="right">
   <a>
-    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909219.png" width="14" height="14" href="https://github.com/SavioCastellar/RoboDog/blob/main/README.de.md?plain=1">
-    <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt"> DE</a>
+    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909219.png" width="14" height="14">
+    <a href="https://github.com/SavioCastellar/RoboDog/blob/main/README.de.md?plain=1"> DE</a>
     <br>
     <img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" width="14" height="14">
     <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt"> PT-BR</a>
@@ -69,6 +69,19 @@ The version for all used packages can be seen here.
 
 For the environment above, this is the output we get:
 
-<a>
-  <img src="https://user-images.githubusercontent.com/78110795/179368899-bee8cdec-037f-4c41-8abc-29f9532995b4.PNG"  width="229.5" height="171.25">
-</a>
+
+For the environment above, that's the output we get:
+
+``` Ruby
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>, <Food>]
+    RoboDog: Ate at 5.
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>, <Water>]
+    RoboDog: Drank at 7.
+```
