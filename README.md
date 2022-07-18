@@ -52,7 +52,7 @@ RoboDog image ^.^
 The version for all used packages can be seen here.
 
 ## Output
-
+Setting up the environment:
 ``` Ruby
     # RoboDog at position 0
     park.add_thing(dog, 0)
@@ -67,9 +67,6 @@ The version for all used packages can be seen here.
     park.run(10)
 ```
 
-For the environment above, this is the output we get:
-
-
 For the environment above, that's the output we get:
 
 ``` Ruby
@@ -79,9 +76,9 @@ For the environment above, that's the output we get:
     [<RoboDog>]
     [<RoboDog>]
     [<RoboDog>, <Food>]
-    RoboDog: Ate at 5.
+    #RoboDog: Ate at 5.
     [<RoboDog>]
     [<RoboDog>]
     [<RoboDog>, <Water>]
-    RoboDog: Drank at 7.
+    #RoboDog: Drank at 7.
 ```
