@@ -4,7 +4,7 @@
     <a href="https://github.com/SavioCastellar/RoboDog/blob/main/README.de.md?plain=1"> DE</a>
     <br>
     <img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" width="14" height="14">
-    <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt"> PT-BR</a>
+    <a href="https://github.com/SavioCastellar/RoboDog/blob/main/README.pt-br.md"> PT-BR</a>
   </a>
 </p>
 
@@ -78,7 +78,9 @@ For the environment above, that's the output we get:
     [<RoboDog>, <Food>]
     #RoboDog: Ate at 5.
     [<RoboDog>]
-    [<RoboDog>]
     [<RoboDog>, <Water>]
     #RoboDog: Drank at 7.
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
 ```
