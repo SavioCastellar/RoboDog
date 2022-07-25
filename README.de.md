@@ -1,7 +1,7 @@
 
 <p align="right">
   <a>
-    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909219.png" width="40" height="40">
+    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909219.png" width="32" height="32">
   </a>
 </p>
 
@@ -19,56 +19,65 @@
 </p>
 
 ## Einleitung
-Das Ziel in diesem Projekt ist zu vertehen, wie handelt ein Agent in einer Umgebung nach einer Wahrnehmung.<br>
+Das Ziel in diesem Projekt ist zu vertehen, wie ein Agent in einer Umgebung nach einer Wahrnehmung handelt.<br>
 Um dieses Ziel zu erreinchen, wurden der RoboDog ```Agent``` und der Park ```Umgebung``` umgesetzt.<br>
-Der Agent muss in der Lage sein, mit den Wahrnehmungen zu interagieren.<br>
-Gehen, essen and trinken sind die Taten der Agent kann macht.<br>
-<br>
-<br>
-<h4 align="center">...unfertige Erzeugnisse...</h4>
-So... The RoboDog walks at the Park, notices the things that are nearby and take actions based in it perceptions.
+Der Agent muss in der Lage sein und mit den Wahrnehmungen zu interagieren.<br>
+Gehen, essen und trinken sind die Taten der Agent kann macht.<br>
+So... RoboDog geht durch dem Park, bemerkt Dinge das in der Nähe sind und interagiert.<br>
 
-## Technologies
-Project is created with:
+## Technologien
+Das Projekt ist erstellt mit:
 * Python: 3.6.0
 * Notebook: 4.3.1
 
 <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt">Requirements</a>
 
-## Features
+## Merkmale
 ```agents.py```<br />
-File where the agent, the enviroment and those attributes are defined.
+In dieser Datei sind der Agent und die Umgebung umgesetzt.
 
 ```agents.ipynb```<br />
-You can run the program in a Jupyter Notebook from here.
+Hier können Sie das Programm in Jupyter Notebook ausführen.
 
 ```agents.yaml```<br />
-That's the python env.
+Das ist die virtuelle Umgebung.
 
 ```AIBO.jpg```<br />
-RoboDog image ^.^
+Bild des RoboDog ^.^
 
 ```requirements.txt```<br />
-The version for all used packages can be seen here.
+Die Version für alle notwendiges Pakete finden Sie hier.
 
 ## Output
 
 ``` Ruby
-    # RoboDog at position 0
-    park.add_thing(dog, 0)
+    # RoboDog in Stellung 0
+    park.add_thing(Hund, 0)
     
-    # Food at position 5
-    park.add_thing(food, 5)
+    # Esse in Stellung 5
+    park.add_thing(Essen, 5)
     
-    # Water at position 7
-    park.add_thing(water, 7)
+    # Wasser in Stellung 7
+    park.add_thing(Wasser, 7)
     
-    # Number of steps
+    # Anzahl der Schritte das hat der Hund gemacht
     park.run(10)
 ```
 
-For the environment above, this is the output we get:
+Für die Umgebung darüber, haben wir dieser Output:
 
-<a>
-  <img src="https://user-images.githubusercontent.com/78110795/179368899-bee8cdec-037f-4c41-8abc-29f9532995b4.PNG"  width="229.5" height="171.25">
-</a>
+``` Ruby
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>, <Essen>]
+    #RoboDog: hat in 5 gegessen.
+    [<RoboDog>]
+    [<RoboDog>, <Wasser>]
+    #RoboDog: hat in 7 getrunken.
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+```
