@@ -1,6 +1,6 @@
 <p align="right">
   <a>
-    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" width="40" height="40">
+    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" width="32" height="32">
   </a>
 </p>
 
@@ -14,59 +14,67 @@
 <h3 align="center">RoboDog</h3>
 
 <p align="center">
-  Das ist eine persönliche Projekt um AI zu studieren.
+  Este é um projeto pessoal para o estudo de IA.
 </p>
 
 ## Introdução
-Das Ziel in diesem Projekt ist zu vertehen, wie handelt ein Agent in einer Umgebung nach einer Wahrnehmung.<br>
-Um dieses Ziel zu erreinchen, wurden der RoboDog ```Agent``` und der Park ```Umgebung``` umgesetzt.<br>
-Der Agent muss in der Lage sein, mit den Wahrnehmungen zu interagieren.<br>
-Gehen, essen and trinken sind die Taten der Agent kann macht.<br>
-<br>
-<br>
-<h4 align="center">...unfertige Erzeugnisse...</h4>
-So... The RoboDog walks at the Park, notices the things that are nearby and take actions based in it perceptions.
+O objetivo do projeto é entender como um agente se comporta em um ambiente de acordo com suas percepções.<br>
+Para alcançar esse objetivo, o RoboDog ```agente``` e o Parque ```ambiente``` foram implementados.<br>
+O agente deve ser capaz de notar suas percepções e realizar algumas ações.<br>
+Para fins de interação, Comida e Água ```coisas``` foram colocadas no Parque.<br>
+Andar, Comer e Beber são as ações que o agente é capaz de realizar. <br>
+Dessa forma, o RoboDog anda pelo parque, percebe as coisas ao seu redor e realiza ações baseado em suas percepções.<br>
 
 ## Tecnologias
-Project is created with:
+O projeto é criiado com:
 * Python: 3.6.0
 * Notebook: 4.3.1
 
 <a href="https://github.com/SavioCastellar/RoboDog/blob/main/requirements.txt">Requirements</a>
 
-## Características
+## Recursos
 ```agents.py```<br />
-File where the agent, the enviroment and those attributes are defined.
+Arquivo no qual o agente, o ambiente e seus atributos estão definidos.
 
 ```agents.ipynb```<br />
-You can run the program in a Jupyter Notebook from here.
+O programa pode ser rodado em um Jupyter Notebook por aqui.
 
 ```agents.yaml```<br />
-That's the python env.
+Este é o ambiente virtual do python.
 
 ```AIBO.jpg```<br />
-RoboDog image ^.^
+Imagem utilizada para representar o RoboDog ^.^
 
 ```requirements.txt```<br />
-The version for all used packages can be seen here.
+As versões para todas as bibliotecas e pacotes utilizados podem ser encontradas aqui.
 
 ## Saída
 ``` Ruby
-    # RoboDog at position 0
+    # RoboDog está na posição 0
     park.add_thing(dog, 0)
     
-    # Food at position 5
+    # Comida na posição 5
     park.add_thing(food, 5)
     
-    # Water at position 7
+    # Água na posição 7
     park.add_thing(water, 7)
     
-    # Number of steps
+    # Número de passos que o RoboDog dará
     park.run(10)
 ```
 
-For the environment above, this is the output we get:
+Para o ambiente acima, recebemos a seguinte saída:
 
-<a>
-  <img src="https://user-images.githubusercontent.com/78110795/179368899-bee8cdec-037f-4c41-8abc-29f9532995b4.PNG"  width="229.5" height="171.25">
-</a>
+``` Ruby
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>, <Comida>]
+    #RoboDog: Comeu na posição 5.
+    [<RoboDog>]
+    [<RoboDog>]
+    [<RoboDog>, <Agua>]
+    #RoboDog: Bebeu na posição 7.
+```
